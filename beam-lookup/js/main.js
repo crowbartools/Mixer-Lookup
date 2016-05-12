@@ -59,6 +59,7 @@ function channelLookup(username){
         var cFollowMessage = data.preferences['channel:notify:followmessage'];
         var cSubscriberMessage = data.preferences['channel:notify:subscribemessage'];
         var cSubscriberMail = data.preferences['channel:partner:submail'];
+        var cTweetText = data.preferences['channel:tweet:body'];
 		
         // Convert to Human
         if(cOnline === false){
@@ -97,7 +98,7 @@ function channelLookup(username){
             var cGameDescription = "Description not available."
         }
 
-        if(cFTL == "0"){
+        if(cFTL === -1){
             var cFTL = "FTL not active."
         } else{
             var cFTL = "FTL is active."
@@ -140,7 +141,7 @@ function channelLookup(username){
             newHTML.push('<span class="group">'+uGroups[i].name+'</span>');
         }
         $('.uGroups').html(newHTML.join(""));
-        
+
         $('.cToken').text(cToken+' - #'+cID);
         $('.cOnline').text(cOnline);
         $('.cFeatured').text(cFeatured);
@@ -165,9 +166,13 @@ function channelLookup(username){
         $('.cGameDescription').text(cGameDescription);
         $('.cGameDescriptionSource').text(cGameDescriptionSource);
         $('.cShareText').text(cShareText);
+        $('.cTweetText').text(cTweetText);
         $('.cFollowMessage').text(cFollowMessage);
         $('.cSubscriberMessage').text(cSubscriberMessage);
         $('.cSubscriberMail').text(cSubscriberMail);
+
+        // Pull list of hosters
+		hosters(cID);
 
         $('.cLink').html('<a href="http://www.beam.pro/'+cToken+'" target="blank">Go To Channel ></a>');    })
 
@@ -176,6 +181,23 @@ function channelLookup(username){
 		$('.links .direct .link').html('<a href="http://www.firebottle.tv/beam-lookup?username='+trimmedUsername+'">http://www.firebottle.tv/beam-lookup?username='+trimmedUsername+'</a>');
 		$('.links .clean .link').html('<a href="http://www.firebottle.tv/beam-lookup?username='+trimmedUsername+'&clean=yes">http://www.firebottle.tv/beam-lookup?username='+trimmedUsername+'&clean=yes</a>');
 		$('.links').show();
+
+}
+
+//Find Hosters
+function hosters(cID){
+	$.getJSON("https://beam.pro/api/v1/channels/" + cID + "/hosters", function(data) {
+		if(data.length){
+			var i;
+			for (i = 0; i < data.length; ++i) {
+			    var streamer = data[i].token;
+			    var viewers = data[i].viewersCurrent;
+			    $('.cHosted').append('<span>'+streamer+' ('+viewers+')</span>');
+			}
+		} else {
+			$('.cHosted').append('<span>None</span>');
+		}		
+	});
 }
 
 // Function to grab URL parameters
