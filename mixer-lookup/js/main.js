@@ -178,8 +178,8 @@ function channelLookup(username){
 
 		var trimmedUsername = username.trim();
 		// throw in profile links
-		$('.links .direct .link').html('<a href="http://www.firebottle.tv/Mixer-lookup?username='+trimmedUsername+'">http://www.firebottle.tv/Mixer-lookup?username='+trimmedUsername+'</a>');
-		$('.links .clean .link').html('<a href="http://www.firebottle.tv/Mixer-lookup?username='+trimmedUsername+'&clean=yes">http://www.firebottle.tv/Mixer-lookup?username='+trimmedUsername+'&clean=yes</a>');
+		$('.links .direct .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'</a>');
+		$('.links .clean .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes</a>');
 		$('.links').show();
 
 }
