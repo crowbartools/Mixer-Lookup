@@ -1,0 +1,263 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>User Lookup Mixer.com - Firebottle.tv</title>
+    <meta name="description" content="Stream Jumper lets you monitor multiple Mixer.com streams at the same time.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="css/main.css" rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="top">
+            <div class="title">
+                <h1>Mixer.com User Lookup</h1>
+            </div>
+            <div class="instructions">
+                Type in a Mixer.com username to look up user information. You'll be given user data available via the Mixer.com API. This will also generate a direct link to your profile as well as a version without the top UI for profile page use.
+                <div class="btnwrap">
+                    <div class="intruction-btn">
+                        <input class="streamerinputadd" placeholder="Mixer username">
+                        <button class="streamerinputaddbtn">Take a look</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-slider">
+            <button class="uihide">Show/Hide Top</button>
+        </div>
+
+        <div class="lookup-info hidden">
+            <div class="links">
+                <div class="info-link direct">
+                    <p class="title">Direct Link</p>
+                    <p class="link"></p> 
+                </div>
+                <div class="info-link clean">
+                    <p class="title">Clean Profile Link</p>
+                    <p class="link"></p> 
+                </div>
+            </div>
+            <div class="user">
+                <div class="user-name">
+                    <div class="section-name">
+                        <h2>User Profile</h2>
+                    </div>
+                    <div class="info">
+                        <p class="uUsername"></p>
+                    </div>
+                </div>
+                <div class="user-main">
+                    <div class="left">
+                        <div class="info user-avatar">
+                            <p class="uAvatarURL"><img src="images/no-image.jpg"></p>
+                        </div>
+                        <div class="info user-social">
+                            <p class="uSocial">
+                                <a href="" class="twitter" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="" class="youtube" target="_blank">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                                <a href="" class="playerme" target="_blank">
+                                    <i class="fa fa-gamepad"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="info user-created">
+                            <p class="label">Creation Date</p>
+                            <p class="value uCreation"></p>
+                        </div>
+						 <div class="info user-level">
+                            <p class="label">Level</p>
+                            <p class="value uLevel"></p>
+                        </div>
+                        <div class="info user-experience">
+                            <p class="label">Experience Points</p>
+                            <p class="value uExperience"></p>
+                        </div>
+                        <div class="info user-sparks">
+                            <p class="label">Sparks</p>
+                            <p class="value uSparks"></p>
+                        </div>
+                        <div class="info user-groups">
+                            <p class="label">User Groups</p>
+                            <p class="value uGroups"></p>
+                        </div>
+                        <div class="info user-bio">
+                            <p class="label">Bio</p>
+                            <p class="value uBio"></p>
+                        </div>
+                        <div class="info user-updated">
+                            <p class="label">Updated Date</p>
+                            <p class="value uUpdated"></p>
+                        </div>
+                        <div class="info user-verified">
+                            <p class="label">Verified Email</p>
+                            <p class="value uVerified"></p>
+                        </div>
+                        <div class="info user-suspended">
+                            <p class="label">Account Suspended</p>
+                            <p class="value cSuspended"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="channel">
+
+                <div class="channel-name">
+                    <div class="section-name">
+                        <h2>Channel Profile</h2>
+                    </div>
+                    <div class="info">
+                        <p class="cToken"></p>
+                    </div>
+                </div>
+                <div class="channel-main">
+                    <div class="left">
+                        <div class="info channel-thumbnail">
+                            <p class="cThumbURL"><img src="images/no-image-channel.jpg"></p>
+                        </div>
+                        <div class="info channel-status">
+                            <div class="channel-info">
+                                <p class="cOnline"></p>
+                                <p class="cLink"></p>
+                            </div>
+                            <div class="channel-stats">
+                                <div class="info c-current-viewers">
+                                    <p class="label">Current Viewers</p>
+                                    <p class="value cViewersCurrent"></p>
+                                </div>
+                                <div class="info c-total-viewers">
+                                    <p class="label">Total Viewers</p>
+                                    <p class="value cViewersTotal"></p>
+                                </div>
+                                <div class="info c-followers">
+                                    <p class="label">Follower Count</p>
+                                    <p class="value cNumFollowers"></p>
+                                </div>
+                                <div class="info c-rating">
+                                    <p class="label">Rated</p
+                                    ><p class="value cAudience"></p>
+                                </div>
+                                <div class="info c-partnered">
+                                    <p class="label">Partnered</p>
+                                    <p class="value cPartnered"></p>
+                                </div>
+                                <div class="info c-featured">
+                                    <p class="label">Featured Streamer</p>
+                                    <p class="value cFeatured"></p>
+                                </div>
+                                <div class="info c-ftl">
+                                    <p class="label">FTL Status</p>
+                                    <p class="value cFTL"></p>
+                                </div>
+                                <div class="info c-interactive">
+                                    <p class="label">Interactive status</p>
+                                    <p class="value cInteractive"></p>
+                                </div>
+                                <div class="info c-hosted">
+                                    <p class="label">People Hosting</p>
+                                    <p class="value cHosted"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="info c-name">
+                            <p class="label">Channel Name</p>
+                            <p class="value cName"></p>
+                        </div>
+                        <div class="info c-game">
+                            <p class="label">Game Name</p>
+                            <p class="value cGameName"></p>
+                        </div>
+                        <div class="info c-description">
+                            <p class="label">Game Description</p>
+                            <p class="value cGameDescription"></p>
+                            </div>
+                        <div class="info c-description-source">
+                            <p class="label">Game Description Source</p>
+                            <p class="value cGameDescriptionSource"></p>
+                        </div>
+                        <div class="info c-sharetext">
+                            <p class="label">Share Text</p>
+                            <p class="value cShareText"></p>
+                        </div>
+                        <div class="info c-tweettext">
+                            <p class="label">Tweet Text</p>
+                            <p class="value cTweetText"></p>
+                        </div>
+                        <div class="info c-follow-message">
+                            <p class="label">Follow Message</p>
+                            <p class="value cFollowMessage"></p>
+                        </div>
+                        <div class="info c-sub-message">
+                            <p class="label">Subscriber Message</p>
+                            <p class="value cSubscriberMessage"></p>
+                        </div>
+                        <div class="info c-subemail">
+                            <p class="label">Subscriber eMail</p>
+                            <p class="value cSubscriberMail"</p>
+                        </div>
+                        <div class="info c-transcode">
+                            <p class="label">Transcoding</p>
+                            <p class="value cTranscode"></p>
+                        </div>
+                        <div class="info c-tetris">
+                            <p class="label">Tetris Game ID</p>
+                            <p class="value cTetrisGameId"></p>
+                        </div>
+                        <div class="info c-desc-creation">
+                            <p class="label">Description Creation Date</p>
+                            <p class="value cDescriptionCreation"></p>
+                        </div>
+                        <div class="info c-desc-updated">
+                            <p class="label">Description Updated Date</p>
+                            <p class="value cDescriptionUpdated"></p>
+                        </div>
+                        <div class="info c-thumbnail-creation">
+                            <p class="label">Thumbnail Creation</p>
+                            <p class="value cThumbCreation"></p>
+                        </div>
+                        <div class="info c-thumbnail-updated">
+                            <p class="label">Thumbnail Updated</p>
+                            <p class="value cThumbUpdated"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+    <script src="js/main.js"></script>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-72658246-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+    
+</body>
+
+</html>
