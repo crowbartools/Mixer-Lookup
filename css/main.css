@@ -12,6 +12,9 @@
 }
 .label{
     font-size: 1.1em;
+    font-weight:bold;
+    color:#3C424F;
+    margin-bottom:0px;
 }
 .left{
     margin:0% 1% 0% 0%;
@@ -45,6 +48,9 @@
 
 
 /*** USER AREA ***/
+.user{
+    margin-bottom:2%;
+}
 .user-main, .channel-main{
     display:flex;
     margin-bottom:2%;
@@ -76,7 +82,8 @@
     color: #0b1122;
 }
 .uSocial a{
-    display:none;
+    display:block;
+    text-transform: capitalize;
 }
 
 /*** Channel Area ***/

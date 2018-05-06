@@ -1,0 +1,246 @@
+<div class="gridContainer page-container">
+    <section class="content-section content-section-spacing">
+        <div class="row middle-xs" id="mixer-lookup">
+            <div class="col-sm-12 full-col-left-padding full-col-right-padding">
+                <h2>What is the Mixer Lookup Tool?</h2>
+                <p>This tool allows users to view Mixer API information in a formatted way. This is very useful to see when accounts were created and all sorts of other public information. You can even use this tool to see who exactly is hosting you at any point in time.</p>
+            </div>
+        </div>
+    </section>
+    <section class="content-section content-section-spacing">
+        <div class="row middle-xs" id="lookup-form">
+            <div class="col-sm-12 full-col-left-padding full-col-right-padding">
+                <h2>How do I use it?</h2>
+                <p>Type in a username below to look up their information!</p>
+                <form class="lookup-form">
+                    <label>Username:</label>
+                    <input type="text" class="username" placeholder="Mixer Username" required>
+                    <input class="lookup-submit button big round color1" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="content-section content-section-spacing" id="lookup-user-section" style="display:none">
+        <div class="row middle-xs" id="lookup-user">
+            <div class="col-sm-12">
+                <div class="birthday-info">
+                    <h2>Account Creation</h2>
+                    <p>Account created on: <br> <span class="user-creation-day"></span></p>
+                    <p>Next Anniversary is on: <br> <span class="user-anniversary-day"></span></p>
+                </div>
+                <div class="user">
+                    <div class="user-name">
+                        <div class="section-name">
+                            <h2>User Profile</h2>
+                        </div>
+                        <div class="info">
+                            <p class="uUsername"></p>
+                        </div>
+                    </div>
+                    <div class="user-main shadow-large-black">
+                        <div class="left">
+                            <div class="info user-avatar">
+                                <p class="uAvatarURL"><img src="https://crowbartools.com/projects/mixer-lookup/images/no-image.jpg"></p>
+                            </div>
+                            <div class="info user-social">
+                                <p class="uSocial"></p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="info user-created">
+                                <p class="label">Creation Date</p>
+                                <p class="value uCreation"></p>
+                            </div>
+                                <div class="info user-level">
+                                <p class="label">Level</p>
+                                <p class="value uLevel"></p>
+                            </div>
+                            <div class="info user-experience">
+                                <p class="label">Experience Points</p>
+                                <p class="value uExperience"></p>
+                            </div>
+                            <div class="info user-sparks">
+                                <p class="label">Sparks</p>
+                                <p class="value uSparks"></p>
+                            </div>
+                            <div class="info user-groups">
+                                <p class="label">User Groups</p>
+                                <p class="value uGroups"></p>
+                            </div>
+                            <div class="info user-bio">
+                                <p class="label">Bio</p>
+                                <p class="value uBio"></p>
+                            </div>
+                            <div class="info user-updated">
+                                <p class="label">Updated Date</p>
+                                <p class="value uUpdated"></p>
+                            </div>
+                            <div class="info user-suspended">
+                                <p class="label">Account Suspended</p>
+                                <p class="value cSuspended"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="channel">
+    
+                    <div class="channel-name">
+                        <div class="section-name">
+                            <h2>Channel Profile</h2>
+                        </div>
+                        <div class="info">
+                            <p class="cToken"></p>
+                        </div>
+                    </div>
+                    <div class="channel-main shadow-large-black">
+                        <div class="left">
+                            <div class="info channel-thumbnail">
+                                <p class="cThumbURL"><img src="https://crowbartools.com/projects/mixer-lookup/images/no-image-channel.jpg"></p>
+                            </div>
+                            <div class="info channel-status">
+                                <div class="channel-info">
+                                    <p class="cOnline"></p>
+                                    <p class="cLink"></p>
+                                </div>
+                                <div class="channel-stats">
+                                    <div class="info c-current-viewers">
+                                        <p class="label">Current Viewers</p>
+                                        <p class="value cViewersCurrent"></p>
+                                    </div>
+                                    <div class="info c-total-viewers">
+                                        <p class="label">Total Viewers</p>
+                                        <p class="value cViewersTotal"></p>
+                                    </div>
+                                    <div class="info c-followers">
+                                        <p class="label">Follower Count</p>
+                                        <p class="value cNumFollowers"></p>
+                                    </div>
+                                    <div class="info c-rating">
+                                        <p class="label">Rated</p>
+                                        <p class="value cAudience"></p>
+                                    </div>
+                                    <div class="info c-partnered">
+                                        <p class="label">Partnered</p>
+                                        <p class="value cPartnered"></p>
+                                    </div>
+                                    <div class="info c-featured">
+                                        <p class="label">Featured Streamer</p>
+                                        <p class="value cFeatured"></p>
+                                    </div>
+                                    <div class="info c-ftl">
+                                        <p class="label">FTL Status</p>
+                                        <p class="value cFTL"></p>
+                                    </div>
+                                    <div class="info c-interactive">
+                                        <p class="label">Interactive status</p>
+                                        <p class="value cInteractive"></p>
+                                    </div>
+                                    <div class="info c-hosted">
+                                        <p class="label">People Hosting</p>
+                                        <p class="value cHosted"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="info c-name">
+                                <p class="label">Channel Name</p>
+                                <p class="value cName"></p>
+                            </div>
+                            <div class="info c-game">
+                                <p class="label">Game Name</p>
+                                <p class="value cGameName"></p>
+                            </div>
+                            <div class="info c-description">
+                                <p class="label">Game Description</p>
+                                <p class="value cGameDescription"></p>
+                                </div>
+                            <div class="info c-description-source">
+                                <p class="label">Game Description Source</p>
+                                <p class="value cGameDescriptionSource"></p>
+                            </div>
+                            <div class="info c-sharetext">
+                                <p class="label">Share Text</p>
+                                <p class="value cShareText"></p>
+                            </div>
+                            <div class="info c-tweettext">
+                                <p class="label">Tweet Text</p>
+                                <p class="value cTweetText"></p>
+                            </div>
+                            <div class="info c-follow-message">
+                                <p class="label">Follow Message</p>
+                                <p class="value cFollowMessage"></p>
+                            </div>
+                            <div class="info c-sub-message">
+                                <p class="label">Subscriber Message</p>
+                                <p class="value cSubscriberMessage"></p>
+                            </div>
+                            <div class="info c-subemail">
+                                <p class="label">Subscriber eMail</p>
+                                <p class="value cSubscriberMail"></p>
+                            </div>
+                            <div class="info c-transcode">
+                                <p class="label">Transcoding</p>
+                                <p class="value cTranscode"></p>
+                            </div>
+                            <div class="info c-desc-creation">
+                                <p class="label">Description Creation Date</p>
+                                <p class="value cDescriptionCreation"></p>
+                            </div>
+                            <div class="info c-desc-updated">
+                                <p class="label">Description Updated Date</p>
+                                <p class="value cDescriptionUpdated"></p>
+                            </div>
+                            <div class="info c-thumbnail-creation">
+                                <p class="label">Thumbnail Creation</p>
+                                <p class="value cThumbCreation"></p>
+                            </div>
+                            <div class="info c-thumbnail-updated">
+                                <p class="label">Thumbnail Updated</p>
+                                <p class="value cThumbUpdated"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content-section content-section-spacing">
+        <div class="row middle-xs" id="credits-support">
+            <div class="col-sm-5">
+                <iframe frameborder="0" height="400" src="https://discordapp.com/widget?id=372817064034959370&amp;theme=dark" width="100%"></iframe>
+            </div>
+            <div class="col-sm-7 full-col-left-padding full-col-right-padding">
+                <h2>Support</h2>
+                We aim to provide as much support as possible for all of our tools. We believe that a strong support system creates a strong community. There are several different ways to ask for support. Our developers monitor all of these channels. We're also happy to say that there are many community members who know as much about the app as the devs! These people are gracious enough to help us with support as well. All of this means that you'll hopefully recieve support in a timely manner.
+                <div class="buttons-wrapper">
+                    <a class="button big black round outline" href="https://discord.gg/tTmMbrG" rel="noopener" style="display: inline;" target="_blank">Discord</a><a class="button big black round outline" href="https://crowbartools.com/forums" style="display: inline;">Forums</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content-section content-section-spacing">
+        <div class="row middle-xs" id="firebot-tutorials">
+            <div class="col-sm-12 full-col-left-padding full-col-right-padding">
+                <h2>Contributors</h2>
+                https://github.com/crowbartools/Mixer-Chat-Overlay/graphs/contributors
+            </div>
+        </div><!-- End Row -->
+    </section>
+    <section class="content-section content-section-spacing">
+        <div class="row middle-xs" id="firebot-patches">
+            <div class="col-sm-12">
+                <h2 class="patch-title">Latest Update</h2>
+                <div class="latest-patches">Initial commit</div>
+            </div>
+        </div><!-- End Row -->
+    </section>
+</div><!-- End Grid Container-->
+<style>
+    .patch-title, .release-title, .release-time{
+        text-align:center;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<script src="/projects/mixer-lookup/js/main.js"></script>
+<link href="/projects/mixer-lookup/css/main.css" rel="stylesheet" type="text/css" media="all">

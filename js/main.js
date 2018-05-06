@@ -39,7 +39,7 @@ function channelLookup(username){
         let cOnline = data.online;
         let cFeatured = data.featured;
         let cPartnered = data.partnered;
-        let cTranscode = data.transcodingEnabled;
+        let cTranscode = data.hasTranscodes;
         let cSuspended = data.suspended;
         let cName = data.name;
         let cAudience = data.audience;
@@ -47,22 +47,18 @@ function channelLookup(username){
         let cViewersCurrent = data.viewersCurrent;
         let cNumFollowers = data.numFollowers;
         let cInteractive = data.interactive;
-        let cTetrisGameId = data.tetrisGameId;
         let cFTL = data.ftl;
         let cDescriptionCreation = data.createdAt;
         let cDescriptionUpdated = data.updatedAt;
         
-        if(data.thumbnail !== null){
-            let cThumbURL = data.thumbnail.url;
-            let cThumbCreation = data.thumbnail.createdAt;
-            let cThumbUpdated = data.thumbnail.updatedAt;
-        }
+
+        let cThumbURL = data.thumbnail.url ? data.thumbnail.url : "https://crowbartools.com/projects/mixer-lookup/images/no-image.jpg";
+        let cThumbCreation = data.thumbnail.createdAt ? data.thumbnail.createdAt : "No Created Data";
+        let cThumbUpdated = data.thumbnail.updatedAt ? data.thumbnail.updatedAt : "No Updated Data";
         
-        if(data.type !== null){
-            let cGameName = data.type.name;
-            let cGameDescription = data.type.description;
-            let cGameDescriptionSource = data.type.source;
-        }
+        let cGameName = data.type.name ? data.type.name : "No Game Name";
+        let cGameDescription = data.type.description ? data.type.description : "No Game Description";
+        let cGameDescriptionSource = data.type.source ? data.type.source : "No Game Source";
 
         let cShareText = data.preferences.sharetext;
         let cFollowMessage = data.preferences['channel:notify:followmessage'];
@@ -72,60 +68,44 @@ function channelLookup(username){
         
         // Convert to Human
         if(cOnline === false){
-            let cOnline = 'offline';
+            cOnline = 'offline';
             $('.cOnline').addClass('offline');
-        }else{
-            let cOnline = 'online';
+        } else {
+            cOnline = 'online';
             $('.cOnline').addClass('online');
         }
 
         if(cSuspended === false){
-            let cSuspended = 'no';
+            cSuspended = 'no';
         }else{
-            let cSuspended = 'yes';
+            cSuspended = 'yes';
         }
 
         if(cInteractive === false){
-            let cInteractive = 'Not interactive.';
+            cInteractive = 'Not interactive.';
         }else{
-            let cInteractive = 'Interactive is on.';
+            cInteractive = 'Interactive is on.';
         }
 
         if(cFeatured === false){
-            let cFeatured = 'no';
+            cFeatured = 'no';
         }else{
-            let cFeatured = 'yes';
+            cFeatured = 'yes';
         }
 
         if(cPartnered === false){
-            let cPartnered = 'no';
-        }else{
-            let cPartnered = 'yes';
-        }
-
-        if(cGameDescription == ""){
-            let cGameDescription = "Description not available."
-        }
-
-        if(cFTL === -1){
-            let cFTL = "FTL not active."
+            cPartnered = 'no';
         } else {
-            let cFTL = "FTL is active."
+            cPartnered = 'yes';
         }
 
         if(cTranscode === true){
-            let cTranscode = "Transcoding is on."
+            cTranscode = "Transcoding is on."
         } else{
-            let cTranscode = "Transcoding is off."
-        }
-        
-        if (cGameName === undefined || cGameName === null){
-            let cGameName = "No Game Set."
-        }
-        
+            cTranscode = "Transcoding is off."
+        }        
 
         // Let's get their anniversary date.
-        let uCreation = data.user.createdAt
         let uCreationHuman = moment(uCreation).format("dddd, MMMM Do YYYY, h:mm:ss a");
         let currentTime = moment();
         let currentYear = moment().year();
@@ -153,12 +133,14 @@ function channelLookup(username){
         $('.uVerified').text(uVerified);
 
         $.each(uSocial, function(k,v){
-            if(k == "twitter"){
-                $('.twitter').show().attr("href",v);
-            }else if(k == "youtube"){
-                $('.youtube').show().attr("href",v);
-            }else if(k == "player"){
-                $('.playerme').show().attr("href",v);
+            if(k !== "verified"){
+                let template = `
+                    <a href="${v}" class="${k}" target="_blank">
+                        ${k}
+                    </a>
+                `;
+
+                $('.uSocial').append(template);
             }
         })
 
@@ -166,12 +148,12 @@ function channelLookup(username){
         $('.uSparks').text(uSparks);
         $('.uAvatarURL img').attr('src',uAvatarURL);
         $('.uBio').text(uBio);
-        $('.uCreation').text(uCreation);
-        $('.uUpdated').text(uUpdated);
+        $('.uCreation').text(moment(uCreation).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        $('.uUpdated').text(moment(uUpdated).format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
         let newHTML = [];
         for (let i = 0; i < uGroups.length; i++) {
-            newHTML.push('<span class="group">'+uGroups[i].name+'</span>');
+            newHTML.push('<div class="group">'+uGroups[i].name+'</div>');
         }
         $('.uGroups').html(newHTML.join(""));
 
@@ -188,13 +170,12 @@ function channelLookup(username){
         $('.cNumFollowers').text(cNumFollowers);
         $('.uLevel').text(uLevel);
         $('.cInteractive').text(cInteractive);
-        $('.cTetrisGameId').text(cTetrisGameId);
         $('.cFTL').text(cFTL);
-        $('.cDescriptionCreation').text(cDescriptionCreation);
-        $('.cDescriptionUpdated').text(cDescriptionUpdated);
-        $('.cThumbURL img').attr('src',cThumbURL);
-        $('.cThumbCreation').text(cThumbCreation);
-        $('.cThumbUpdated').text(cThumbUpdated);
+        $('.cDescriptionCreation').text(moment(cDescriptionCreation).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        $('.cDescriptionUpdated').text(moment(cDescriptionUpdated).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        $('.cThumbURL img').attr('src', cThumbURL);
+        $('.cThumbCreation').text(moment(cThumbCreation).format("dddd, MMMM Do YYYY, h:mm:ss a"));
+        $('.cThumbUpdated').text(moment(cThumbUpdated).format("dddd, MMMM Do YYYY, h:mm:ss a"));
         $('.cGameName').text(cGameName);
         $('.cGameDescription').text(cGameDescription);
         $('.cGameDescriptionSource').text(cGameDescriptionSource);
@@ -218,6 +199,7 @@ function channelLookup(username){
 
 //Find Hosters
 function hosters(cID){
+    $('.cHosted').append('<span>None</span>');
     $.getJSON("https://Mixer.com/api/v1/channels/" + cID + "/hosters", function(data) {
         if(data.length){
             let i;
@@ -226,8 +208,6 @@ function hosters(cID){
                 let viewers = data[i].viewersCurrent;
                 $('.cHosted').append('<span>'+streamer+' ('+viewers+')</span>');
             }
-        } else {
-            $('.cHosted').append('<span>None</span>');
-        }		
+        }	
     });
 }
