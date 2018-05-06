@@ -1,3 +1,12 @@
+$(document).ready(function () {
+    $('.lookup-form').submit(function(event){
+        event.preventDefault();
+        let name = $('.lookup-form .username').val();
+        channelLookup(name);
+        $('#lookup-user-section').fadeIn('fast');
+    })
+});
+
 // Lookup channel and parse data into variables
 function channelLookup(username){
     // Reset Fields
@@ -11,108 +20,132 @@ function channelLookup(username){
     $.getJSON("https://Mixer.com/api/v1/channels/" + username, function(data) {
 
         // User Info
-        var uUserID = data.user.id;
-        var uUsername = data.user.username;
-        var uVerified = data.user.verified;
-        var uSocial = data.user.social;
-        var uExperience = data.user.experience;
-        var uSparks = data.user.sparks;
-        var uAvatarURL = data.user.avatarUrl;
-		var uLevel = data.user.level;
-        var uBio = data.user.bio;
-        var uCreation = data.user.createdAt;
-        var uUpdated = data.user.updatedAt;
-        var uGroups = data.user.groups;
+        let uUserID = data.user.id;
+        let uUsername = data.user.username;
+        let uVerified = data.user.verified;
+        let uSocial = data.user.social;
+        let uExperience = data.user.experience;
+        let uSparks = data.user.sparks;
+        let uAvatarURL = data.user.avatarUrl;
+        let uLevel = data.user.level;
+        let uBio = data.user.bio;
+        let uCreation = data.user.createdAt;
+        let uUpdated = data.user.updatedAt;
+        let uGroups = data.user.groups;
 
         // Channel Info
-        var cID = data.id;
-        var cToken = data.token;
-        var cOnline = data.online;
-        var cFeatured = data.featured;
-        var cPartnered = data.partnered;
-        var cTranscode = data.transcodingEnabled;
-        var cSuspended = data.suspended;
-        var cName = data.name;
-        var cAudience = data.audience;
-        var cViewersTotal = data.viewersTotal;
-        var cViewersCurrent = data.viewersCurrent;
-        var cNumFollowers = data.numFollowers;
-        var cInteractive = data.interactive;
-        var cTetrisGameId = data.tetrisGameId;
-        var cFTL = data.ftl;
-        var cDescriptionCreation = data.createdAt;
-        var cDescriptionUpdated = data.updatedAt;
-		
-		if(data.thumbnail !== null){
-			var cThumbURL = data.thumbnail.url;
-			var cThumbCreation = data.thumbnail.createdAt;
-			var cThumbUpdated = data.thumbnail.updatedAt;
-		}
-		
-		if(data.type !== null){
-			var cGameName = data.type.name;
-			var cGameDescription = data.type.description;
-			var cGameDescriptionSource = data.type.source;
-		}
+        let cID = data.id;
+        let cToken = data.token;
+        let cOnline = data.online;
+        let cFeatured = data.featured;
+        let cPartnered = data.partnered;
+        let cTranscode = data.transcodingEnabled;
+        let cSuspended = data.suspended;
+        let cName = data.name;
+        let cAudience = data.audience;
+        let cViewersTotal = data.viewersTotal;
+        let cViewersCurrent = data.viewersCurrent;
+        let cNumFollowers = data.numFollowers;
+        let cInteractive = data.interactive;
+        let cTetrisGameId = data.tetrisGameId;
+        let cFTL = data.ftl;
+        let cDescriptionCreation = data.createdAt;
+        let cDescriptionUpdated = data.updatedAt;
+        
+        if(data.thumbnail !== null){
+            let cThumbURL = data.thumbnail.url;
+            let cThumbCreation = data.thumbnail.createdAt;
+            let cThumbUpdated = data.thumbnail.updatedAt;
+        }
+        
+        if(data.type !== null){
+            let cGameName = data.type.name;
+            let cGameDescription = data.type.description;
+            let cGameDescriptionSource = data.type.source;
+        }
 
-        var cShareText = data.preferences.sharetext;
-        var cFollowMessage = data.preferences['channel:notify:followmessage'];
-        var cSubscriberMessage = data.preferences['channel:notify:subscribemessage'];
-        var cSubscriberMail = data.preferences['channel:partner:submail'];
-        var cTweetText = data.preferences['channel:tweet:body'];
-		
+        let cShareText = data.preferences.sharetext;
+        let cFollowMessage = data.preferences['channel:notify:followmessage'];
+        let cSubscriberMessage = data.preferences['channel:notify:subscribemessage'];
+        let cSubscriberMail = data.preferences['channel:partner:submail'];
+        let cTweetText = data.preferences['channel:tweet:body'];
+        
         // Convert to Human
         if(cOnline === false){
-            var cOnline = 'offline';
+            let cOnline = 'offline';
             $('.cOnline').addClass('offline');
         }else{
-            var cOnline = 'online';
+            let cOnline = 'online';
             $('.cOnline').addClass('online');
         }
 
         if(cSuspended === false){
-            var cSuspended = 'no';
+            let cSuspended = 'no';
         }else{
-            var cSuspended = 'yes';
+            let cSuspended = 'yes';
         }
 
         if(cInteractive === false){
-            var cInteractive = 'Not interactive.';
+            let cInteractive = 'Not interactive.';
         }else{
-            var cInteractive = 'Interactive is on.';
+            let cInteractive = 'Interactive is on.';
         }
 
         if(cFeatured === false){
-            var cFeatured = 'no';
+            let cFeatured = 'no';
         }else{
-            var cFeatured = 'yes';
+            let cFeatured = 'yes';
         }
 
         if(cPartnered === false){
-            var cPartnered = 'no';
+            let cPartnered = 'no';
         }else{
-            var cPartnered = 'yes';
+            let cPartnered = 'yes';
         }
 
         if(cGameDescription == ""){
-            var cGameDescription = "Description not available."
+            let cGameDescription = "Description not available."
         }
 
         if(cFTL === -1){
-            var cFTL = "FTL not active."
-        } else{
-            var cFTL = "FTL is active."
+            let cFTL = "FTL not active."
+        } else {
+            let cFTL = "FTL is active."
         }
 
         if(cTranscode === true){
-            var cTranscode = "Transcoding is on."
+            let cTranscode = "Transcoding is on."
         } else{
-            var cTranscode = "Transcoding is off."
+            let cTranscode = "Transcoding is off."
         }
-		
-		if (cGameName === undefined || cGameName === null){
-			var cGameName = "No Game Set."
-		}
+        
+        if (cGameName === undefined || cGameName === null){
+            let cGameName = "No Game Set."
+        }
+        
+
+        // Let's get their anniversary date.
+        let uCreation = data.user.createdAt
+        let uCreationHuman = moment(uCreation).format("dddd, MMMM Do YYYY, h:mm:ss a");
+        let currentTime = moment();
+        let currentYear = moment().year();
+        let nextBDay = moment(uCreation).set('year', currentYear);
+        let nextBDayHuman = moment(uCreation).set('year', currentYear).format("dddd, MMMM Do YYYY, h:mm:ss a");
+        let d = new Date();
+        let n = d.toISOString();
+        
+        // If their birthday has already passed for this year, add a year.
+        if(moment().format("MMM Do YY") == moment(nextBDay).format("MMM Do YY") ){
+            // Its your Mixiversary!
+            let nextBDayHuman = "It's Mixiversary time today!";
+        } else if (moment(nextBDay).isBefore(currentTime)){
+            // Your Mixiversary passed for this year.
+            let nextBDay = moment(uCreation).set('year', currentYear + 1);
+            let nextBDayHuman = moment(uCreation).set('year', currentYear + 1).format("dddd, MMMM Do YYYY, h:mm:ss a");
+        }
+        // Output anniversary and creation date in readble format.
+        $('.user-creation-day').text(uCreationHuman);
+        $('.user-anniversary-day').text(nextBDayHuman);
 
 
         // Throw vars into fields for styling.
@@ -136,8 +169,8 @@ function channelLookup(username){
         $('.uCreation').text(uCreation);
         $('.uUpdated').text(uUpdated);
 
-        var newHTML = [];
-        for (var i = 0; i < uGroups.length; i++) {
+        let newHTML = [];
+        for (let i = 0; i < uGroups.length; i++) {
             newHTML.push('<span class="group">'+uGroups[i].name+'</span>');
         }
         $('.uGroups').html(newHTML.join(""));
@@ -153,7 +186,7 @@ function channelLookup(username){
         $('.cViewersTotal').text(cViewersTotal);
         $('.cViewersCurrent').text(cViewersCurrent);
         $('.cNumFollowers').text(cNumFollowers);
-		$('.uLevel').text(uLevel);
+        $('.uLevel').text(uLevel);
         $('.cInteractive').text(cInteractive);
         $('.cTetrisGameId').text(cTetrisGameId);
         $('.cFTL').text(cFTL);
@@ -172,94 +205,29 @@ function channelLookup(username){
         $('.cSubscriberMail').text(cSubscriberMail);
 
         // Pull list of hosters
-		hosters(cID);
+        hosters(cID);
 
         $('.cLink').html('<a href="http://www.Mixer.com/'+cToken+'" target="blank">Go To Channel ></a>');    })
 
-		var trimmedUsername = username.trim();
-		// throw in profile links
-		$('.links .direct .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'</a>');
-		$('.links .clean .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes</a>');
-		$('.links').show();
-
+        let trimmedUsername = username.trim();
+        // throw in profile links
+        $('.links .direct .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'</a>');
+        $('.links .clean .link').html('<a href="http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes">http://www.firebottle.tv/projects/Mixer-lookup?username='+trimmedUsername+'&clean=yes</a>');
+        $('.links').show();    
 }
 
 //Find Hosters
 function hosters(cID){
-	$.getJSON("https://Mixer.com/api/v1/channels/" + cID + "/hosters", function(data) {
-		if(data.length){
-			var i;
-			for (i = 0; i < data.length; ++i) {
-			    var streamer = data[i].token;
-			    var viewers = data[i].viewersCurrent;
-			    $('.cHosted').append('<span>'+streamer+' ('+viewers+')</span>');
-			}
-		} else {
-			$('.cHosted').append('<span>None</span>');
-		}		
-	});
-}
-
-// Function to grab URL parameters
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-// Grab the parameters we need.
-var username = getUrlParameter('username');
-var cleanUI = getUrlParameter('clean');
-
-// Check parameters and render something that won't break the page.
-if (username != '' && username != null && username != undefined && cleanUI != 'yes'){
-    channelLookup(username);
-} else if ( username != '' && username != null && username != undefined && cleanUI == 'yes'){
-    channelLookup(username);
-    $('.top, .links').hide();
-} else if ( username != '' || username === null || username === undefined && cleanUI == 'yes'){
-    console.log('Defaulting to regular page layout.')
-}
-
-// Set initial show hide button text
-function uiHider(){
-    var visible = $('.top').is(':visible');
-    if( visible == true){
-        $('.uihide').text('Hide UI');
-    } else {
-        $('.uihide').text('Show UI');
-    }
-}
-
-// Things to run on page load.
-$( document ).ready(function() {
-    uiHider();
-
-    // Add Username
-    $('.streamerinputaddbtn').click(function() {
-        var username = $('.streamerinputadd').val();
-        channelLookup(username);
+    $.getJSON("https://Mixer.com/api/v1/channels/" + cID + "/hosters", function(data) {
+        if(data.length){
+            let i;
+            for (i = 0; i < data.length; ++i) {
+                let streamer = data[i].token;
+                let viewers = data[i].viewersCurrent;
+                $('.cHosted').append('<span>'+streamer+' ('+viewers+')</span>');
+            }
+        } else {
+            $('.cHosted').append('<span>None</span>');
+        }		
     });
-
-    // UI Hider
-    $('.uihide').click(function() {
-        $('.top').slideToggle();
-        var btnText = $('.uihide').text();
-        if (btnText == 'Hide UI'){
-            $('.uihide').text('Show UI');
-        }else{
-            $('.uihide').text('Hide UI');
-        }
-    });
-});
-
-
-
+}
