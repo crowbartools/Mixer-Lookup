@@ -50,15 +50,25 @@ function channelLookup(username){
         let cFTL = data.ftl;
         let cDescriptionCreation = data.createdAt;
         let cDescriptionUpdated = data.updatedAt;
+        let cThumbURL = "https://crowbartools.com/projects/mixer-lookup/images/no-image.jpg";
+        let cThumbCreation = "No Created Data";
+        let cThumbUpdated = "No Updated Data";
+        let cGameName = "No Game Name";
+        let cGameDescription = "No Game Description";
+        let cGameDescriptionSource = "No Game Source";
         
+        if(data.thumbnail != null){
+            cThumbURL = data.thumbnail.url ? data.thumbnail.url : "https://crowbartools.com/projects/mixer-lookup/images/no-image.jpg";
+            cThumbCreation = data.thumbnail.createdAt ? data.thumbnail.createdAt : "No Created Data";
+            cThumbUpdated = data.thumbnail.updatedAt ? data.thumbnail.updatedAt : "No Updated Data";
+        }
 
-        let cThumbURL = data.thumbnail.url ? data.thumbnail.url : "https://crowbartools.com/projects/mixer-lookup/images/no-image.jpg";
-        let cThumbCreation = data.thumbnail.createdAt ? data.thumbnail.createdAt : "No Created Data";
-        let cThumbUpdated = data.thumbnail.updatedAt ? data.thumbnail.updatedAt : "No Updated Data";
-        
-        let cGameName = data.type.name ? data.type.name : "No Game Name";
-        let cGameDescription = data.type.description ? data.type.description : "No Game Description";
-        let cGameDescriptionSource = data.type.source ? data.type.source : "No Game Source";
+        if(data.type != null){
+            cGameName = data.type.name ? data.type.name : "No Game Name";
+            cGameDescription = data.type.description ? data.type.description : "No Game Description";
+            cGameDescriptionSource = data.type.source ? data.type.source : "No Game Source";
+        }
+
 
         let cShareText = data.preferences.sharetext;
         let cFollowMessage = data.preferences['channel:notify:followmessage'];
